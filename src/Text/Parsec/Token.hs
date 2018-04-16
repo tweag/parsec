@@ -433,7 +433,7 @@ makeTokenParser languageDef
                       do{ str <- between (char '"')
                                          (char '"' <?> "end of string")
                                          (many stringChar)
-                        ; return (foldr (maybe id (:)) "" str)
+                        ; return (foldr (maybe id (\a b -> a : b)) "" str)
                         }
                       <?> "literal string")
 
